@@ -9,14 +9,14 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "dropdowns": [
+    "tabs": [
       {
-        "dropdown": "Untitled Dropdown",
+        "tab": "Untitled Dropdown",
         "pages": [
-          "dsgdsgsdg",
           {
             "group": "Getting Started",
             "pages": [
+              "dsgdsgsdg",
               "index",
               "quickstart",
               {
@@ -34,7 +34,7 @@
         ]
       },
       {
-        "dropdown": "Untitled Version",
+        "tab": "Untitled Version",
         "pages": [
           "ver-1"
         ]
