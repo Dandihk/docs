@@ -94,10 +94,11 @@
     "default": "system"
   },
   "background": {
-    "decoration": "windows",
+    "decoration": "gradient",
     "color": {
       "light": "#FFFFFF",
       "dark": "#000000"
-    }
+    },
+    "image": "/favicon.svg"
   }
 }
