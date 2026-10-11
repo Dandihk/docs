@@ -9,9 +9,9 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "anchors": [
+    "dropdowns": [
       {
-        "anchor": "Untitled Dropdown",
+        "dropdown": "Untitled Dropdown",
         "pages": [
           "dsgdsgsdg",
           {
@@ -34,7 +34,7 @@
         ]
       },
       {
-        "anchor": "Untitled Version",
+        "dropdown": "Untitled Version",
         "pages": [
           "ver-1"
         ]
