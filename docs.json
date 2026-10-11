@@ -23,9 +23,9 @@
         }
       ]
     },
-    "versions": [
+    "tabs": [
       {
-        "version": "Untitled Dropdown",
+        "tab": "Untitled Dropdown",
         "pages": [
           "dsgdsgsdg",
           {
@@ -48,7 +48,7 @@
         ]
       },
       {
-        "version": "Untitled Version",
+        "tab": "Untitled Version",
         "pages": [
           "ver-1"
         ]
