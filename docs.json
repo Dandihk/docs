@@ -1,0 +1,97 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "aspen",
+  "name": "WEB DNX",
+  "colors": {
+    "primary": "#DB89CA",
+    "light": "#E8C1DE",
+    "dark": "#692656"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Documentation",
+          "href": "https://mintlify.com/docs",
+          "icon": "book-open-cover"
+        },
+        {
+          "anchor": "Blog",
+          "href": "https://mintlify.com/blog",
+          "icon": "newspaper"
+        }
+      ]
+    },
+    "anchors": [
+      {
+        "anchor": "Untitled Dropdown",
+        "pages": [
+          "dsgdsgsdg",
+          {
+            "group": "Getting Started",
+            "pages": [
+              "index",
+              "quickstart",
+              {
+                "group": "Untitled Group",
+                "pages": [
+                  "dsgdsgsdg",
+                  {
+                    "group": "Untitled Group",
+                    "pages": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "primary": {
+      "type": "discord",
+      "href": "https://discord.gg/m6SKaxHbeZ"
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "cursor",
+      "vscode"
+    ],
+    "display": "header"
+  },
+  "footer": {
+    "socials": {
+      "linkedin": "https://linkedin.com/company/mintlify",
+      "instagram": "https://instagram.com/cxbvcxbvcxbx"
+    }
+  },
+  "styling": {
+    "eyebrows": "section"
+  },
+  "interaction": {
+    "drilldown": false
+  },
+  "appearance": {
+    "default": "system"
+  },
+  "background": {
+    "decoration": "windows",
+    "color": {
+      "light": "#FFFFFF",
+      "dark": "#000000"
+    }
+  }
+}
