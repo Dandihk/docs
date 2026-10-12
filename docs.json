@@ -7,7 +7,10 @@
     "light": "#E8C1DE",
     "dark": "#692656"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/favicon.svg",
+    "dark": "/favicon.svg"
+  },
   "navigation": {
     "tabs": [
       {
@@ -25,7 +28,9 @@
                   "dsgdsgsdg",
                   {
                     "group": "Untitled Group",
-                    "pages": []
+                    "pages": [
+                      "untitled-page"
+                    ]
                   }
                 ]
               }
@@ -34,9 +39,15 @@
         ]
       },
       {
-        "tab": "Untitled Version",
-        "pages": [
-          "ver-1"
+        "tab": "PHP",
+        "groups": [
+          {
+            "group": "Pertemuan 1",
+            "pages": [
+              "ver-1",
+              "ver-1-2"
+            ]
+          }
         ]
       }
     ]
