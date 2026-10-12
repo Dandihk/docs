@@ -36,7 +36,8 @@
               }
             ]
           }
-        ]
+        ],
+        "hidden": true
       },
       {
         "tab": "SMT 1",
