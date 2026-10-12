@@ -40,12 +40,19 @@
       },
       {
         "tab": "PHP",
-        "groups": [
+        "dropdowns": [
           {
-            "group": "Pertemuan 1",
+            "dropdown": "Pertemuan 1",
             "pages": [
               "ver-1",
               "ver-1-2"
+            ]
+          },
+          {
+            "dropdown": "Pertemuan 2",
+            "pages": [
+              "ver-1-3",
+              "ver-1-2-2"
             ]
           }
         ]
