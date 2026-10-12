@@ -8,8 +8,8 @@
     "dark": "#692656"
   },
   "favicon": {
-    "light": "/favicon.svg",
-    "dark": "/favicon.svg"
+    "light": "/images/icon_tjkt_light.svg",
+    "dark": "/images/icon_tjkt_dark.svg"
   },
   "navigation": {
     "tabs": [
@@ -53,8 +53,8 @@
     ]
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/images/icon_tjkt_light.svg",
+    "dark": "/images/icon_tjkt_dark.svg"
   },
   "navbar": {
     "primary": {
