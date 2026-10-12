@@ -39,8 +39,14 @@
         ]
       },
       {
-        "tab": "PHP",
+        "tab": "SMT 1",
         "groups": [
+          {
+            "group": "HTML CSS JS",
+            "pages": [
+              "untitled-page-2"
+            ]
+          },
           {
             "group": "PHP",
             "pages": [
