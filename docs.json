@@ -88,13 +88,15 @@
     "drilldown": false
   },
   "appearance": {
-    "default": "system"
+    "default": "light",
+    "strict": true
   },
   "background": {
-    "decoration": "gradient",
+    "decoration": "grid",
     "color": {
       "light": "#FFFFFF",
       "dark": "#000000"
-    }
+    },
+    "image": "/images/icon_tjkt_light.svg"
   }
 }
