@@ -41,7 +41,8 @@
       },
       {
         "tab": "SMT 1",
-        "groups": [
+        "pages": [
+          "untitled-page-3",
           {
             "group": "HTML CSS JS",
             "pages": [
