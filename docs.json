@@ -46,7 +46,12 @@
           {
             "group": "HTML CSS JS",
             "pages": [
-              "untitled-page-2"
+              {
+                "group": "Pretemuan 1",
+                "pages": [
+                  "untitled-page-2"
+                ]
+              }
             ]
           },
           {
@@ -55,7 +60,7 @@
               {
                 "group": "Pertemuan 1",
                 "pages": [
-                  "ver-1",
+                  "pertemuan-1",
                   "ver-1-2"
                 ]
               },
@@ -69,6 +74,9 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "SMT 2"
       }
     ]
   },
