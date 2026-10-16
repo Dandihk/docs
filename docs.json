@@ -126,5 +126,10 @@
       "dark": "#000000"
     },
     "image": "/images/Transparan.svg"
+  },
+  "errors": {
+    "404": {
+      "redirect": true
+    }
   }
 }
