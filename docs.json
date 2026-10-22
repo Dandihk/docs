@@ -76,7 +76,33 @@
         ]
       },
       {
-        "tab": "SMT 2"
+        "tab": "WEB",
+        "groups": [
+          {
+            "group": "SMT 1",
+            "pages": [
+              {
+                "group": "HTML CSS JS",
+                "pages": [
+                  {
+                    "group": "Pertemuan 1",
+                    "pages": [
+                      "pengenalan",
+                      "pengenalan-2"
+                    ]
+                  },
+                  {
+                    "group": "Pertemuan 2",
+                    "pages": [
+                      "html",
+                      "tugas"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   },
