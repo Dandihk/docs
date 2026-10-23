@@ -41,9 +41,9 @@
       },
       {
         "tab": "XI WEB",
-        "products": [
+        "dropdowns": [
           {
-            "product": "SMT 1",
+            "dropdown": "SMT 1",
             "pages": [
               {
                 "group": "HTML CSS JS",
@@ -67,7 +67,7 @@
             ]
           },
           {
-            "product": "SMT 2",
+            "dropdown": "SMT 2",
             "pages": [
               {
                 "group": "Laravel",
