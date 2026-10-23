@@ -64,7 +64,12 @@
                   }
                 ]
               }
-            ]
+            ],
+            "icon": "1",
+            "color": {
+              "light": "#FF77AA",
+              "dark": "#FF77AA"
+            }
           },
           {
             "dropdown": "Semester 2",
@@ -75,7 +80,12 @@
                   "untitled-page-4"
                 ]
               }
-            ]
+            ],
+            "icon": "2",
+            "color": {
+              "light": "#FF77AA",
+              "dark": "#FF77AA"
+            }
           }
         ]
       },
