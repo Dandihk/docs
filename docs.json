@@ -43,7 +43,7 @@
         "tab": "XI WEB",
         "dropdowns": [
           {
-            "dropdown": "SMT 1",
+            "dropdown": "Semester 1",
             "pages": [
               {
                 "group": "HTML CSS JS",
@@ -67,7 +67,7 @@
             ]
           },
           {
-            "dropdown": "SMT 2",
+            "dropdown": "Semester 2",
             "pages": [
               {
                 "group": "Laravel",
