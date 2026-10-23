@@ -101,6 +101,17 @@
                 ]
               }
             ]
+          },
+          {
+            "group": "SMT 2",
+            "pages": [
+              {
+                "group": "Laravel",
+                "pages": [
+                  "untitled-page-4"
+                ]
+              }
+            ]
           }
         ]
       }
