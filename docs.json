@@ -20,7 +20,7 @@
             "group": "Getting Started",
             "pages": [
               "dsgdsgsdg",
-              "index",
+              "indexx",
               "quickstart",
               {
                 "group": "Untitled Group",
@@ -45,7 +45,7 @@
           {
             "dropdown": "Semester 1",
             "pages": [
-              "intro/intro-smt-1",
+              "index",
               {
                 "group": "HTML CSS JS",
                 "pages": [
