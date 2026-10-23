@@ -45,6 +45,7 @@
           {
             "dropdown": "Semester 1",
             "pages": [
+              "intro/intro-smt-1",
               {
                 "group": "HTML CSS JS",
                 "pages": [
@@ -77,11 +78,7 @@
                 ]
               }
             ],
-            "icon": "2",
-            "color": {
-              "light": "#FF77AA",
-              "dark": "#FF77AA"
-            }
+            "icon": "2"
           }
         ]
       },
