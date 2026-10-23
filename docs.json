@@ -41,9 +41,9 @@
       },
       {
         "tab": "XI WEB",
-        "anchors": [
+        "menu": [
           {
-            "anchor": "SMT 1",
+            "item": "SMT 1",
             "pages": [
               {
                 "group": "HTML CSS JS",
@@ -67,7 +67,7 @@
             ]
           },
           {
-            "anchor": "SMT 2",
+            "item": "SMT 2",
             "pages": [
               {
                 "group": "Laravel",
