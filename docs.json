@@ -65,11 +65,7 @@
                 ]
               }
             ],
-            "icon": "1",
-            "color": {
-              "light": "#FF77AA",
-              "dark": "#FF77AA"
-            }
+            "icon": "1"
           },
           {
             "dropdown": "Semester 2",
