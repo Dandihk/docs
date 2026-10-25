@@ -116,7 +116,8 @@
   },
   "logo": {
     "light": "/images/dnx.svg",
-    "dark": "/images/dnx-white.svg"
+    "dark": "/images/dnx-white.svg",
+    "href": "/ini-perkenalan"
   },
   "navbar": {
     "primary": {
