@@ -9,7 +9,7 @@
   },
   "favicon": {
     "light": "/images/dnx.svg",
-    "dark": "/images/icon_tjkt_light.svg"
+    "dark": "/images/dnx-white.svg"
   },
   "navigation": {
     "tabs": [
@@ -19,19 +19,8 @@
           {
             "group": "Getting Started",
             "pages": [
-              "dsgdsgsdg",
               "indexx",
-              "quickstart",
-              {
-                "group": "Untitled Group",
-                "pages": [
-                  "dsgdsgsdg",
-                  {
-                    "group": "Untitled Group",
-                    "pages": []
-                  }
-                ]
-              }
+              "quickstart"
             ]
           },
           "index"
@@ -132,7 +121,7 @@
   },
   "logo": {
     "light": "/images/dnx.svg",
-    "dark": "/images/icon_tjkt_light.svg"
+    "dark": "/images/dnx-white.svg"
   },
   "navbar": {
     "primary": {
