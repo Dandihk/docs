@@ -14,7 +14,7 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Untitled Dropdown",
+        "tab": "intro",
         "pages": [
           {
             "group": "Getting Started",
@@ -28,16 +28,14 @@
                   "dsgdsgsdg",
                   {
                     "group": "Untitled Group",
-                    "pages": [
-                      "untitled-page"
-                    ]
+                    "pages": []
                   }
                 ]
               }
             ]
-          }
-        ],
-        "hidden": true
+          },
+          "intro"
+        ]
       },
       {
         "tab": "XI WEB",
@@ -45,7 +43,7 @@
           {
             "dropdown": "Semester 1",
             "pages": [
-              "index",
+              "introsmt1",
               {
                 "group": "HTML CSS JS",
                 "pages": [
