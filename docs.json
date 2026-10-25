@@ -16,14 +16,9 @@
       {
         "tab": "intro",
         "pages": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "index",
-              "quickstart"
-            ]
-          }
-        ]
+          "ini-perkenalan"
+        ],
+        "icon": "0"
       },
       {
         "tab": "XI WEB",
