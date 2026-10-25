@@ -19,11 +19,10 @@
           {
             "group": "Getting Started",
             "pages": [
-              "indexx",
+              "index",
               "quickstart"
             ]
-          },
-          "index"
+          }
         ]
       },
       {
