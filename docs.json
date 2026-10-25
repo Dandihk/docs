@@ -8,7 +8,7 @@
     "dark": "#692656"
   },
   "favicon": {
-    "light": "/images/icon_tjkt_dark.svg",
+    "light": "/images/dnx.svg",
     "dark": "/images/icon_tjkt_light.svg"
   },
   "navigation": {
@@ -131,7 +131,7 @@
     ]
   },
   "logo": {
-    "light": "/images/icon_tjkt_dark.svg",
+    "light": "/images/dnx.svg",
     "dark": "/images/icon_tjkt_light.svg"
   },
   "navbar": {
