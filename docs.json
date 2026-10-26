@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "aspen",
+  "theme": "maple",
   "name": "WEB DNX",
   "colors": {
     "primary": "#DB89CA",
@@ -157,7 +157,7 @@
     "decoration": "grid",
     "color": {
       "light": "#FFFFFF",
-      "dark": "#4E1E3A"
+      "dark": "#000000"
     },
     "image": "/images/Transparan.svg"
   },
