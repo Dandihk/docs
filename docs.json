@@ -151,7 +151,7 @@
   },
   "appearance": {
     "default": "light",
-    "strict": true
+    "strict": false
   },
   "background": {
     "decoration": "grid",
