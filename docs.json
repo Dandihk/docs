@@ -45,6 +45,12 @@
                     ]
                   }
                 ]
+              },
+              {
+                "group": "Database",
+                "pages": [
+                  "pengenalan-erd"
+                ]
               }
             ],
             "icon": "1"
@@ -108,6 +114,7 @@
       {
         "tab": "LKS AI",
         "pages": [
+          "data-cleaning",
           "seleksi-ai"
         ]
       }
