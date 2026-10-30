@@ -1,0 +1,207 @@
+---
+title: "Panduan Sistem Basis Data"
+description: "Materi komprehensif mengenai Dasar Administrasi Basis Data, Entity Relationship Diagram (ERD), dan Konsep Model Relational."
+icon: "database"
+---
+
+## 1. Dasar Administrasi Basis Data
+
+### Pengertian Basis Data & DBMS
+
+**Basis Data (Database)** adalah koleksi data yang terorganisir dalam format tertentu dan disimpan secara elektronik. Tujuan utamanya adalah agar proses penyimpanan, pengambilan, dan manipulasi data dapat dilakukan dengan lebih efisien.
+
+**Database Management System (DBMS)** adalah sistem perangkat lunak yang digunakan untuk menyimpan, mengatur, dan memastikan data tersimpan secara aman. Melalui DBMS, pengguna dapat menjalankan operasi CRUD (Create, Read, Update, Delete).
+
+<CardGroup cols={3}>
+  <Card title="MySQL" icon="database">
+    DBMS open-source yang sangat populer untuk aplikasi web.
+  </Card>
+
+  <Card title="MS SQL Server" icon="server">
+    Sistem manajemen basis data relasional dari Microsoft.
+  </Card>
+
+  <Card title="Oracle" icon="shield-check">
+    DBMS skala enterprise dengan fitur keamanan dan performa tinggi.
+  </Card>
+</CardGroup>
+
+---
+
+### Arsitektur & Database Server
+
+- **Arsitektur Data:** Mendefinisikan teknologi dan struktur administrasi untuk mengelola sumber data organisasi agar pengguna dan pengembang dapat mengakses data secara fleksibel.
+- **Database Server:** Basis data yang diletakkan pada jaringan komputer (lokal/interlokal) sehingga dapat diakses secara terpusat atau dibentuk menjadi _database cluster_ untuk pemrosesan masif.
+
+---
+
+## 2. Basic Entity Relationship Diagram (ERD)
+
+**ERD (Entity Relationship Diagram)** adalah model yang menjelaskan hubungan antar-data dalam basis data berdasarkan objek-objek dasar data yang memiliki interelasi.
+
+### Simbol-Simbol ERD
+
+![Image](/images/image-1.png "Image")
+
+<ResponseField name="Entity / Entitas" type="Persegi Panjang">
+  <img
+    src="/images/image-2.png"
+    alt="Image"
+    title="Image"
+    style={{ width:"44%" }}
+  />
+
+  Objek di dunia nyata yang dapat dibedakan dengan objek lainnya. Contoh: `Mahasiswa`, `Dosen`, `Mata Kuliah`, `Ruangan`.
+</ResponseField>
+
+<ResponseField name="Atribut" type="Elips / Oval">
+  <img
+    src="/images/image-3.png"
+    alt="Image"
+    title="Image"
+    style={{ width:"44%" }}
+  />
+
+  Karakteristik yang menjelaskan detail dari suatu entitas atau relasi. Contoh: `Judul`, `Pengarang` pada entitas `Buku`.
+</ResponseField>
+
+<ResponseField name="Relasi" type="Belah Ketupat">
+  Hubungan yang terjadi antara satu atau lebih entitas.
+</ResponseField>
+
+<ResponseField name="Garis / Link" type="Garis lurus">
+  Menghubungkan atribut ke entitas atau entitas ke relasi.
+</ResponseField>
+
+---
+
+### Jenis-Jenis Atribut
+
+<table>
+  <colgroup>
+    <col width="127" />
+    <col width="299" />
+    <col width="244" />
+    <col width="100" />
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Jenis Atribut</th>
+      <th>Deskripsi</th>
+      <th>Contoh</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**Atribut Key**</td>
+      <td>Atribut yang digunakan untuk mengidentifikasi entitas secara unik.</td>
+      <td>`NPM`, `NIP`, `KodeMK`</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>**Atribut Simple**</td>
+      <td>Atribut bernilai tunggal dan tidak dapat dipecah lagi.</td>
+      <td>`Nama`, `SKS`</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>**Atribut Multivalue**</td>
+      <td>Atribut yang memiliki sekelompok/banyak nilai untuk satu entitas.</td>
+      <td>`Gelar`, `No. HP`</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>**Atribut Composite**</td>
+      <td>Atribut yang terdiri dari beberapa atribut yang lebih kecil.</td>
+      <td>`Nama` (Nama Depan, Tengah, Belakang)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>**Atribut Derivatif**</td>
+      <td>Atribut yang nilainya dihasilkan dari atribut lain.</td>
+      <td>`Umur` (diturunkan dari `TglLahir`)</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+### Derajat Relasi
+
+Menjelaskan jumlah entitas yang berpartisipasi dalam suatu relasi (_relationship_):
+
+1. **Unary Degree (Derajat Satu):** Melibatkan 1 entitas.
+   - _Contoh:_ `Mahasiswa` $$\rightarrow$$ _bicara_
+2. **Binary Degree (Derajat Dua):** Melibatkan 2 entitas.
+   - _Contoh:_ `Mahasiswa` $$\rightarrow$$ _pergi_ $$\rightarrow$$ `Perpustakaan`
+3. **Ternary Degree (Derajat Tiga):** Melibatkan 3 entitas.
+   - _Contoh:_ `Mahasiswa` + `Ruangan` + `Mata Kuliah` $$\rightarrow$$ _belajar_
+
+---
+
+### Kardinalitas ERD
+
+<AccordionGroup>
+  <Accordion title="One to One (1 : 1)">
+    Satu entitas A terhubung dengan paling banyak satu entitas B.
+
+    - **Contoh:** 1 `Mahasiswa` $$\rightarrow$$ _kuliah di_ $$\rightarrow$$ 1 `Universitas`
+  </Accordion>
+
+  <Accordion title="One to Many (1 : N)">
+    Satu entitas A dapat terhubung dengan banyak entitas B, tetapi entitas B hanya terhubung dengan satu entitas A.
+
+    - **Contoh:** 1 `Mahasiswa` $$\rightarrow$$ _punya_ $$\rightarrow$$ N `Hobi`
+  </Accordion>
+
+  <Accordion title="Many to Many (N : N)">
+    Banyak entitas A dapat terhubung dengan banyak entitas B.
+
+    - **Contoh:** N `Mahasiswa` $$\rightarrow$$ _belajar_ $$\rightarrow$$ N `Mata Kuliah`
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## 3. Konsep Model Relational
+
+**Relasi (Relational Model)** adalah gambaran struktur basis data berbasis _record_ yang direpresentasikan dalam bentuk tabel.
+
+### Hirarki & Istilah Basis Data Relasional
+
+```xml
+Database
+ └── File / Tabel (contoh: Tabel Mahasiswa, Tabel Dosen)
+      └── Record / Baris (contoh: 19312009 | Yunus | Informatika)
+           └── Atribut / Field / Kolom (contoh: NPM, Nama, Jurusan)
+                └── Data Value (contoh: "Yunus")
+```
+
+---
+
+### Macam-Macam Key pada Database
+
+<Tabs>
+  <Tab title="Primary Key (PK)">
+    Atribut unik yang dipilih sebagai pembeda utama antar baris data.
+
+    > **Tips Perancangan:** Menggunakan atribut manual seperti `NPM` sebagai Primary Key berisiko menyebabkan redundansi data. Disarankan menggunakan atribut tambahan seperti `IDMhs` bernilai numerik dengan fitur **Auto Increment**.
+  </Tab>
+  <Tab title="Foreign Key (FK)">
+    Atribut pada suatu tabel yang merujuk pada Primary Key tabel lain untuk membentuk hubungan/relasi antartabel.
+
+    - **Contoh:** Atribut `IDMhs` di dalam `Tabel Matkul` berfungsi sebagai Foreign Key yang menghubungkan ke `Tabel Mahasiswa`.
+  </Tab>
+  <Tab title="Candidate Key">
+    Atribut atau kumpulan atribut yang berpotensi menjadi Primary Key karena bernilai unik.
+  </Tab>
+  <Tab title="Alternative Key">
+    Candidate Key yang tidak terpilih menjadi Primary Key.
+  </Tab>
+</Tabs>
+
+<Note>
+  **Tahap Selanjutnya:** Materi berikutnya adalah **Teknik Normalisasi pada Basis Data** untuk mengoptimalkan struktur tabel dan menghilangkan redundansi data.
+</Note>

@@ -49,7 +49,8 @@
               {
                 "group": "Database",
                 "pages": [
-                  "pengenalan-erd"
+                  "pengenalan-erd",
+                  "panduan-sistem-basis-data"
                 ]
               }
             ],
