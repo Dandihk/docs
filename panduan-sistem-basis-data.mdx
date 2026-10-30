@@ -66,6 +66,13 @@ icon: "database"
 </ResponseField>
 
 <ResponseField name="Relasi" type="Belah Ketupat">
+  <img
+    src="/images/image-4.png"
+    alt="Image"
+    title="Image"
+    style={{ width:"61%" }}
+  />
+
   Hubungan yang terjadi antara satu atau lebih entitas.
 </ResponseField>
 
@@ -81,8 +88,8 @@ icon: "database"
   <colgroup>
     <col width="127" />
     <col width="299" />
-    <col width="244" />
-    <col width="100" />
+    <col width="184" />
+    <col width="152" />
   </colgroup>
   <thead>
     <tr>
@@ -97,31 +104,31 @@ icon: "database"
       <td>**Atribut Key**</td>
       <td>Atribut yang digunakan untuk mengidentifikasi entitas secara unik.</td>
       <td>`NPM`, `NIP`, `KodeMK`</td>
-      <td></td>
+      <td><img src="/images/image-5.png" alt="Image" title="Image" /></td>
     </tr>
     <tr>
       <td>**Atribut Simple**</td>
       <td>Atribut bernilai tunggal dan tidak dapat dipecah lagi.</td>
       <td>`Nama`, `SKS`</td>
-      <td></td>
+      <td><img src="/images/image-6.png" alt="Image" title="Image" /></td>
     </tr>
     <tr>
       <td>**Atribut Multivalue**</td>
       <td>Atribut yang memiliki sekelompok/banyak nilai untuk satu entitas.</td>
       <td>`Gelar`, `No. HP`</td>
-      <td></td>
+      <td><img src="/images/image-7.png" alt="Image" title="Image" /></td>
     </tr>
     <tr>
       <td>**Atribut Composite**</td>
       <td>Atribut yang terdiri dari beberapa atribut yang lebih kecil.</td>
       <td>`Nama` (Nama Depan, Tengah, Belakang)</td>
-      <td></td>
+      <td><img src="/images/image-8.png" alt="Image" title="Image" /></td>
     </tr>
     <tr>
       <td>**Atribut Derivatif**</td>
       <td>Atribut yang nilainya dihasilkan dari atribut lain.</td>
       <td>`Umur` (diturunkan dari `TglLahir`)</td>
-      <td></td>
+      <td><img src="/images/image-9.png" alt="Image" title="Image" /></td>
     </tr>
   </tbody>
 </table>
@@ -147,17 +154,23 @@ Menjelaskan jumlah entitas yang berpartisipasi dalam suatu relasi (_relationship
   <Accordion title="One to One (1 : 1)">
     Satu entitas A terhubung dengan paling banyak satu entitas B.
 
+    ![Image](/images/image-10.png "Image")
+
     - **Contoh:** 1 `Mahasiswa` $$\rightarrow$$ _kuliah di_ $$\rightarrow$$ 1 `Universitas`
   </Accordion>
 
   <Accordion title="One to Many (1 : N)">
     Satu entitas A dapat terhubung dengan banyak entitas B, tetapi entitas B hanya terhubung dengan satu entitas A.
 
+    ![Image](/images/image-11.png "Image")
+
     - **Contoh:** 1 `Mahasiswa` $$\rightarrow$$ _punya_ $$\rightarrow$$ N `Hobi`
   </Accordion>
 
   <Accordion title="Many to Many (N : N)">
     Banyak entitas A dapat terhubung dengan banyak entitas B.
+
+    ![Image](/images/image-12.png "Image")
 
     - **Contoh:** N `Mahasiswa` $$\rightarrow$$ _belajar_ $$\rightarrow$$ N `Mata Kuliah`
   </Accordion>
@@ -168,6 +181,8 @@ Menjelaskan jumlah entitas yang berpartisipasi dalam suatu relasi (_relationship
 ## 3. Konsep Model Relational
 
 **Relasi (Relational Model)** adalah gambaran struktur basis data berbasis _record_ yang direpresentasikan dalam bentuk tabel.
+
+![Image](/images/image-14.png "Image")
 
 ### Hirarki & Istilah Basis Data Relasional
 
@@ -187,10 +202,14 @@ Database
   <Tab title="Primary Key (PK)">
     Atribut unik yang dipilih sebagai pembeda utama antar baris data.
 
+    ![Image](/images/image-15.png "Image")
+
     > **Tips Perancangan:** Menggunakan atribut manual seperti `NPM` sebagai Primary Key berisiko menyebabkan redundansi data. Disarankan menggunakan atribut tambahan seperti `IDMhs` bernilai numerik dengan fitur **Auto Increment**.
   </Tab>
   <Tab title="Foreign Key (FK)">
     Atribut pada suatu tabel yang merujuk pada Primary Key tabel lain untuk membentuk hubungan/relasi antartabel.
+
+    ![Image](/images/image-16.png "Image")
 
     - **Contoh:** Atribut `IDMhs` di dalam `Tabel Matkul` berfungsi sebagai Foreign Key yang menghubungkan ke `Tabel Mahasiswa`.
   </Tab>
