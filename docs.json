@@ -50,7 +50,8 @@
                 "group": "Database",
                 "pages": [
                   "pengenalan-erd",
-                  "panduan-sistem-basis-data"
+                  "panduan-sistem-basis-data",
+                  "tugas-erd-dan-relasi"
                 ]
               }
             ],
