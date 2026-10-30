@@ -113,9 +113,20 @@
       },
       {
         "tab": "LKS AI",
-        "pages": [
-          "data-cleaning",
-          "seleksi-ai"
+        "groups": [
+          {
+            "group": "Materi",
+            "pages": [
+              "data-cleaning",
+              "data-cleaning-persiapan-machine-learning"
+            ]
+          },
+          {
+            "group": "Soal",
+            "pages": [
+              "seleksi-ai"
+            ]
+          }
         ]
       }
     ]

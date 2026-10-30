@@ -1,0 +1,146 @@
+---
+title: "Data cleaning persiapan Machine Learning"
+---
+
+## 1. Pendahuluan: Mengapa Data Cleaning Penting?
+
+Dalam pengembangan **Machine Learning (ML)**, terdapat prinsip penting: **"Garbage In, Garbage Out"**. Model Machine Learning yang canggih sekalipun tidak akan memberikan hasil prediksi yang akurat jika dilatih menggunakan data yang kotor (_dirty data_).
+
+Sebelum data dimasukkan ke dalam algoritma ML, langkah awal yang sangat krusial adalah **Data Cleaning (Pembersihan Data)**. Panduan ini menggunakan **Google Sheets** sebagai media simulasi untuk memahami konsep dasar _cleaning_ secara intuitif.
+
+<Note>
+  **Tujuan Pembersihan Data:**
+
+  - Memastikan konsistensi format data.
+  - Menangani nilai yang hilang (_missing values_).
+  - Menghapus duplikasi dan data anomali (_outliers_).
+  - Menyiapkan atribut/fitur yang valid untuk proses modeling.
+</Note>
+
+---
+
+## 2. Praktik Data Cleaning di Google Sheets
+
+Gunakan dataset karhutla yang telah disediakan untuk mempraktikkan langkah-langkah pembersihan data berikut secara berurutan. 
+
+> [DATASET KAHUTLA](https://docs.google.com/spreadsheets/d/1vAFFW24_TkfzvSKmljvd-IKGXfbAPBQqrqisjKmaCXY/edit?usp=sharing)
+
+### Langkah 1: Menghapus Data Duplikat
+
+Data yang terduplikasi dapat menyebabkan model ML terbiasa (_overfit_) pada pola tertentu secara berlebihan.
+
+1. Blok seluruh rentang data (`Ctrl + A` atau `Cmd + A`).
+2. Klik menu **Data** > **Pembersihan data** > **Hapus duplikat** (_Data > Data cleanup > Remove duplicates_).
+3. Pastikan opsi **Data memiliki baris tajuk** (_Data has header row_) dicentang.
+4. Klik tombol **Hapus duplikat**.
+
+---
+
+### Langkah 2: Merapikan Teks & Konsistensi Kapitalisasi
+
+Model ML menganggap teks `"Riau"`, `"riau"`, dan `"Riau "` sebagai tiga entitas yang berbeda. Kita harus menstandardisasikannya.
+
+<Accordion title="1. Menghapus Spasi Berlebih (TRIM)">
+  Spasi di awal atau akhir kata sering kali tidak terlihat tetapi merusak sistem analisis.
+
+  - Buat kolom baru, gunakan rumus:
+    ```excel
+    =TRIM(B2)
+    ```
+  - Salin rumus ke bawah untuk membersihkan kolom nama provinsi atau status.
+</Accordion>
+
+<Accordion title="2. Menyamakan Kapitalisasi (PROPER / UPPER / LOWER)">
+  Gunakan fungsi berikut untuk menyamakan format teks:
+
+  - **PROPER**: Mengubah huruf pertama setiap kata menjadi kapital (misal: `Riau`).
+    ```excel
+    =PROPER(B2)
+    ```
+  - **UPPER**: Mengubah semua huruf menjadi kapital (misal: `RIAU`).
+  - **LOWER**: Mengubah semua huruf menjadi kecil (misal: `riau`).
+</Accordion>
+
+---
+
+### Langkah 3: Standardisasi Format Tanggal
+
+Sistem ML membutuhkan format waktu yang konsisten (seperti `YYYY-MM-DD`).
+
+1. Seleksi kolom **Tanggal**.
+2. Klik menu **Format** > **Angka** > **Tanggal** (_Format > Number > Date_).
+3. Jika terdapat tanggal yang ditulis manual secara acak (seperti format teks `"12-Okt-2023"` vs `"2023/10/12"`), perbaiki secara manual agar menjadi tipe data tanggal resmi di Google Sheets.
+
+---
+
+### Langkah 4: Menangani Missing Values & Tipe Data Salah
+
+_Missing values_ (nilai kosong) dan tipe data yang salah (misal: angka ditulis dengan huruf) harus ditangani.
+
+| Masalah | Solusi di Google Sheets | Alasan untuk Machine Learning |
+| :-- | :-- | :-- |
+| **Nilai Kosong** (_Blank_) | Isi dengan nilai rata-rata (_Mean_), Nilai Tengah (_Median_), atau hapus baris jika data tidak lengkap. | Algoritma ML (seperti Regresi/SVM) akan mengalami eror jika mendapati nilai `NULL`. |
+| **Teks pada Kolom Angka** | Ubah teks (misal: `"seratus"`) menjadi angka murni (`100`). | Fitur numerik harus berupa nilai terkuantifikasi. |
+| **Nilai Tidak Logis** | Koreksi nilai negatif (misal: `-50` ha) menjadi angka positif jika itu adalah kesalahan entri. | Data anomali yang salah entri merusak statistik distribusi model. |
+
+<Tip>
+  **Fungsi Penting:** Gunakan fungsi `=VALUE(cell)` untuk mengonversi angka berspesifikasi teks menjadi angka murni, atau gunakan menu **Data** > **Validasi data** untuk membatasi entri data di masa mendatang.
+</Tip>
+
+---
+
+## 3. Membuat Chart (Grafik) yang Baik dan Informatif
+
+Visualisasi data bukan sekadar mempercantik tampilan, tetapi digunakan dalam **Exploratory Data Analysis (EDA)** untuk memahami pola data sebelum dimodelkan.
+
+### Prinsip Utama Visualisasi Data
+
+1. **Sederhana & Jelas:** Hindari penggunaan grafik 3D atau hiasan yang tidak perlu (_chart junk_).
+2. **Pilih Jenis Grafik yang Tepat:**
+   <img
+     src="/images/image.png"
+     alt="Image"
+     title="Image"
+   />
+   - **Bar Chart (Grafik Batang):** Cocok untuk membandingkan kategori (misal: _Total Luas Terbakar per Provinsi_).
+   - **Line Chart (Grafik Garis):** Cocok untuk melihat tren berdasarkan waktu (_Time Series_).
+   - **Pie Chart (Grafik Lingkaran):** Gunakan hanya jika kategori sedikit (\< 5) dan menunjukkan proporsi total 100%.
+   - **Scatter Plot (Grafik Sebar):** Cocok untuk melihat korelasi antara dua variabel numerik.
+
+---
+
+### Langkah Membuat Chart yang Baik di Google Sheets
+
+1. **Seleksi Data Clean:** Blok data yang sudah dibersihkan (misal: Kolom _Provinsi_ dan _Luas Area Terbakar_).
+2. **Sisipkan Grafik:** Klik **Sisipkan** > **Grafik** (_Insert > Chart_).
+3. **Atur Pada Editor Grafik (Chart Editor):**
+   - **Jenis Grafik:** Pilih _Column Chart_ atau _Bar Chart_.
+   - **Sumbu (Axes):** Pastikan Sumbu X (Kategori) dan Sumbu Y (Nilai Numerik) sudah sesuai.
+
+#### Check-List Optimalisasi Grafik (Best Practices):
+
+- [ ] Judul Spesifik: Gunakan judul yang informatif (Contoh: "Total Luas Karhutla per Provinsi (2023)")
+- [ ] Label Sumbu Clear: Beri nama sumbu X (Provinsi) dan sumbu Y (Luas Area dalam Hektar)
+- [ ] Warna yang Bermakna: Gunakan warna konsisten. Hindari warna terlalu mencolok yang membingungkan.
+- [ ] Urutkan Data: Urutkan batang dari yang tertinggi ke terendah agar mudah dibaca.
+
+---
+
+## Info - Alur Kerja Prep Data ke Machine Learning
+
+Berikut ringkasan mental-map proses dari data mentah hingga siap dilatih oleh model ML:
+
+<Steps>
+  <Step title="Raw Data Collection">
+    Mengumpulkan data mentah dari berbagai sumber (CSV, Database, Form).
+  </Step>
+  <Step title="Manual Data Cleaning">
+    Menghapus duplikat, memperbaiki spasi, menangani _missing values_, dan menyamakan format.
+  </Step>
+  <Step title="Exploratory Data Analysis (EDA)">
+    Membuat grafik/chart untuk melihat distribusi data dan mendeteksi korelasi awal.
+  </Step>
+  <Step title={"Feature Engineering & Export"}>
+    Mengekspor data bersih ke format `.csv` untuk diimpor ke Python (Pandas/Scikit-Learn).
+  </Step>
+</Steps>

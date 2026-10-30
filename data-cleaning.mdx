@@ -1,3 +1,93 @@
 ---
 title: "Data cleaning"
 ---
+
+_Data cleaning_ (pembersihan data) adalah langkah paling krusial dalam tahapan _Machine Learning_ (ML). Dalam dunia ML, berlaku prinsip utama yang tidak bisa diganggu gugat:
+
+<Warning>
+  **"Garbage In, Garbage Out"** Jika data yang dimasukkan penuh dengan kesalahan (sampah), maka model prediksi yang dihasilkan juga akan buruk, sehebat apa pun algoritma yang Anda gunakan.
+</Warning>
+
+Berikut adalah tahapan utama _data cleaning_ beserta contoh implementasinya menggunakan library `pandas` di Python.
+
+## Tahapan Data Cleaning
+
+<Steps>
+  <Step title="Menangani Missing Values (Data Kosong)">
+    Dataset sering kali memiliki sel yang kosong (`NaN`/`Null`). Algoritma ML umumnya akan _error_ jika menemukan data kosong.
+
+    - **Dropping:** Menghapus baris/kolom. Cocok jika jumlah data yang hilang sangat sedikit (\< 5%).
+    - **Imputasi:** Mengisi nilai kosong dengan _Mean_ (rata-rata), _Median_ (nilai tengah), atau _Mode_ (modus).
+
+    ```python
+    import pandas as pd
+    
+    # Mengisi nilai kosong pada kolom numerik dengan Median
+    df['umur'] = df['umur'].fillna(df['umur'].median())
+    
+    # Menghapus baris yang memiliki nilai kosong
+    df = df.dropna()
+    ```
+  </Step>
+  <Step title="Menghapus Data Duplikat">
+    Data duplikat membuat model ML menjadi bias karena akan menganggap pola dari data yang berulang tersebut lebih penting daripada yang sebenarnya.
+
+    ```python
+    # Melihat jumlah data duplikat
+    print("Jumlah duplikat:", df.duplicated().sum())
+    
+    # Menghapus data duplikat dan menyimpan perubahannya
+    df = df.drop_duplicates()
+    ```
+  </Step>
+  <Step title="Menangani Outliers (Pencilan)">
+    _Outlier_ adalah nilai data yang menyimpang sangat jauh dari mayoritas data (sangat besar atau sangat kecil). _Outlier_ dapat merusak algoritma sensitif seperti _Linear Regression_.
+
+    <CardGroup cols={2}>
+      <Card title="Metode Z-Score" icon="chart-line">
+        Mendeteksi data yang berjarak lebih dari 3 standar deviasi dari rata-rata.
+      </Card>
+
+      <Card title="Metode IQR" icon="chart-simple">
+        Mendeteksi data di luar batas atas dan batas bawah kuartil (Interquartile Range).
+      </Card>
+    </CardGroup>
+
+    ```python
+    # Contoh menghapus outlier menggunakan metode IQR pada kolom 'pendapatan'
+    Q1 = df['pendapatan'].quantile(0.25)
+    Q3 = df['pendapatan'].quantile(0.75)
+    IQR = Q3 - Q1
+    
+    batas_bawah = Q1 - 1.5 * IQR
+    batas_atas = Q3 + 1.5 * IQR
+    
+    # Filter data hanya yang berada di dalam batas wajar
+    df = df[(df['pendapatan'] >= batas_bawah) & (df['pendapatan'] <= batas_atas)]
+    ```
+  </Step>
+  <Step title="Standarisasi Format dan Tipe Data">
+    Komputer sangat kaku. Angka yang tersimpan sebagai teks (String) tidak akan bisa dihitung. Penulisan teks juga harus konsisten.
+
+    - **Inkonsistensi Teks:** "Jakarta", "jakarta", " JKT " harus diseragamkan.
+    - **Konversi Tipe:** Mengubah _string_ ke numerik atau _datetime_.
+
+    ```python
+    # Menyeragamkan teks menjadi huruf kecil semua dan menghapus spasi berlebih
+    df['kota'] = df['kota'].str.lower().str.strip()
+    
+    # Mengubah kolom teks menjadi format datetime
+    df['tanggal_daftar'] = pd.to_datetime(df['tanggal_daftar'])
+    ```
+  </Step>
+  <Step title="Menghapus Fitur yang Tidak Relevan">
+    Tidak semua kolom data berguna untuk dipelajari oleh model. Menghapus kolom yang tidak memiliki nilai prediktif (seperti ID atau Nama) akan mempercepat dan memperbaiki performa model.
+
+    ```python
+    # Menghapus kolom yang tidak relevan untuk prediksi
+    df = df.drop(columns=['id_pengguna', 'nama_lengkap', 'no_telepon'])
+    ```
+  </Step>
+</Steps>
+
+## Ringk
