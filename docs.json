@@ -44,14 +44,20 @@
                       "tugas"
                     ]
                   }
-                ]
+                ],
+                "hidden": true
               },
               {
                 "group": "Database",
                 "pages": [
                   "pengenalan-erd",
-                  "panduan-sistem-basis-data",
-                  "tugas-erd-dan-relasi"
+                  {
+                    "group": "Pretemuan 16",
+                    "pages": [
+                      "panduan-sistem-basis-data",
+                      "tugas-erd-dan-relasi"
+                    ]
+                  }
                 ]
               }
             ],
