@@ -1,14 +1,22 @@
 ---
 title: "DML (Data Manipulation Language)"
-description: "Belajar mengelola isi database menggunakan INSERT, SELECT, UPDATE, dan DELETE dengan analogi sehari-hari."
+description: "Belajar mengelola isi database menggunakan INSERT, SELECT, UPDATE, dan DELETE "
 icon: "folder-open"
 ---
+
+<Tip>
+  **Indikator**
+
+  1.2.3.   Menyusun Dokumen Perancangan Database Menerapkan perintah SQL untuk membuat, mengubah, dan menghapus struktur tabel (DDL).
+
+  1.2.4.   Menerapkan perintah SQL untuk mengelola data (menambah, mengubah, menghapus, dan menampilkan data) menggunakan DML dan DCL untuk mengelola data serta hak akses pengguna.
+</Tip>
 
 Bayangkan database itu seperti **Lemari Arsip Sekolah** yang berisi banyak folder (Tabel).
 
 Jika DDL (_Data Definition Language_) adalah tukang kayu yang _membuat_ lemari dan map tersebut, maka **DML (_Data Manipulation Language_)** adalah staf tata usaha yang _mengisi, membaca, mengubah, dan membuang_ kertas dokumen di dalam folder tersebut.
 
-DML adalah jantung dari interaksi aplikasi dengan database. DML terdiri dari 4 perintah utama yang sering disebut dengan istilah **CRUD** (_Create, Read, Update, Delete_).
+DML adalah cara interaksi aplikasi dengan database. DML terdiri dari 4 perintah utama yang sering disebut dengan istilah **CRUD** (_Create, Read, Update, Delete_).
 
 ---
 
@@ -22,14 +30,14 @@ Perintah `INSERT` digunakan untuk menambahkan baris data (rekaman) baru ke dalam
 
 ```sql
 -- Memasukkan satu data siswa baru
-INSERT INTO siswa (nis, nama, kelas) 
-VALUES ('1001', 'Budi Santoso', 'XI TJKT 1');
+INSERT INTO siswa (nama, kelas) 
+VALUES ('Budi Santoso', 'XI TJKT 2');
 ```
 
 **Penjelasan:**
 
 - `INSERT INTO siswa`: Kita beri tahu sistem, "Tolong buka folder bernama `siswa`".
-- `(nis, nama, kelas)`: Kita tentukan kolom apa saja yang mau diisi.
+- `(nama, kelas)`: Kita tentukan kolom apa saja yang mau diisi.
 - `VALUES (...)`: Ini adalah isi tulisan di kertasnya (datanya).
 
 ## 2. SELECT (Mencari dan Membaca Data)
@@ -46,7 +54,7 @@ SELECT * FROM siswa;
 
 -- Mengambil nama saja, khusus untuk anak kelas XI TJKT 1
 SELECT nama FROM siswa 
-WHERE kelas = 'XI TJKT 1';
+WHERE kelas = 'XI TJKT 2';
 ```
 
 **Penjelasan:**
@@ -65,12 +73,12 @@ Perintah `UPDATE` digunakan untuk memodifikasi data yang _sudah ada_ di dalam ta
 ```sql
 -- Mengubah kelas Budi yang naik kelas
 UPDATE siswa 
-SET kelas = 'XII TJKT 1' 
-WHERE nis = '1001';
+SET kelas = 'XII TJKT 2' 
+WHERE id_siswa = '1';
 ```
 
 <Warning>
-  **Awas Lupa WHERE!** Jika Anda menjalankan `UPDATE siswa SET kelas = 'XII TJKT 1';` TANPA menggunakan `WHERE`, maka **SEMUA** siswa di sekolah tersebut akan berubah menjadi kelas XII TJKT 1. Ini seperti Anda mencoret seluruh kertas di dalam folder tanpa melihat nama!
+  **Awas Lupa WHERE!** Jika Anda menjalankan `UPDATE siswa SET kelas = 'XII TJKT 2';` TANPA menggunakan `WHERE`, maka **SEMUA** siswa di sekolah tersebut akan berubah menjadi kelas XII TJKT 1. Ini seperti Anda mencoret seluruh kertas di dalam folder tanpa melihat nama!
 </Warning>
 
 ## 4. DELETE (Menghapus Data)
@@ -84,7 +92,7 @@ Perintah `DELETE` digunakan untuk menghapus baris data dari tabel.
 ```sql
 -- Menghapus data siswa bernama Budi
 DELETE FROM siswa 
-WHERE nis = '1001';
+WHERE id_siswa = '1';
 ```
 
 <Warning>
@@ -92,23 +100,3 @@ WHERE nis = '1001';
 </Warning>
 
 ---
-
-## Ringkasan Cepat (Cheat Sheet)
-
-<CardGroup cols={2}>
-  <Card title="INSERT (Create)" icon="plus">
-    Menambah kertas baru ke dalam folder.
-  </Card>
-
-  <Card title="SELECT (Read)" icon="magnifying-glass">
-    Membaca isi kertas di dalam folder.
-  </Card>
-
-  <Card title="UPDATE (Update)" icon="pen-to-square">
-    Mencoret dan mengganti isi tulisan di kertas.
-  </Card>
-
-  <Card title="DELETE (Delete)" icon="trash">
-    Membuang kertas ke tempat sampah.
-  </Card>
-</CardGroup>
