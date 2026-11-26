@@ -1,0 +1,127 @@
+---
+title: "Pertemuan 1: Dasar PHP"
+sidebarTitle: "P1 - Dasar PHP"
+description: "Memahami cara kerja PHP server side, menjalankan XAMPP, dan menulis program PHP dasar serta memproses form."
+keywords:
+  - "PHP"
+  - "XAMPP"
+  - "variabel"
+  - "array"
+  - "form"
+  - "server side"
+---
+
+## Tujuan pembelajaran
+
+Setelah pertemuan ini kamu mampu:
+
+- menjelaskan cara kerja PHP sebagai bahasa server side,
+- menulis variabel, operator, percabangan, dan perulangan,
+- memakai array dan fungsi, serta membaca data form dengan `$_POST`.
+
+## Cara kerja PHP
+
+HTML hanya menampilkan isi yang sudah tetap. PHP berjalan di server: browser mengirim request, server (Apache) menjalankan kode PHP, lalu mengirim hasilnya berupa HTML ke browser.
+
+<Steps>
+  <Step title="Browser mengirim request">
+    Kamu membuka `http://localhost/proyek-web/index.php`.
+  </Step>
+  <Step title="Apache menjalankan PHP">
+    Kode di antara `<?php ... ?>` dieksekusi di server.
+  </Step>
+  <Step title="Server mengirim HTML">
+    Browser hanya menerima hasil akhirnya, bukan kode PHP.
+  </Step>
+</Steps>
+
+## Menyiapkan lingkungan
+
+1. Pasang XAMPP lalu jalankan modul Apache.
+2. Buat folder `proyek-web` di dalam `htdocs`.
+3. Buat file `index.php` dan buka lewat browser.
+
+```php index.php
+<?php
+$nama = "Budi";
+echo "Halo, " . $nama . "!";
+```
+
+<Note>File PHP harus berada di dalam `htdocs` dan dibuka lewat `localhost`, bukan dengan klik ganda file.</Note>
+
+## Variabel, operator, dan percabangan
+
+```php kondisi.php
+<?php
+$nilai = 82;
+$kkm = 75;
+
+if ($nilai >= $kkm) {
+    echo "Tuntas";
+} elseif ($nilai >= 60) {
+    echo "Remedial";
+} else {
+    echo "Perlu bimbingan";
+}
+```
+
+Operator yang sering dipakai: `+ - * /` untuk hitung, `.` untuk menggabung string, `==` dan `===` untuk membandingkan, serta `&&` dan `||` untuk logika.
+
+## Perulangan, array, dan fungsi
+
+```php array.php
+<?php
+$hobi = ["membaca", "coding", "gim"];
+
+foreach ($hobi as $h) {
+    echo "<li>$h</li>";
+}
+
+$siswa = ["nama" => "Sari", "kelas" => "XI PPLG"];
+echo $siswa["nama"];
+
+function luasPersegi($sisi) {
+    return $sisi * $sisi;
+}
+echo luasPersegi(5);
+```
+
+## Memproses form dengan POST
+
+<CodeGroup>
+
+```html form.html
+<form action="hasil.php" method="post">
+  <input type="text" name="nama" placeholder="Nama">
+  <input type="number" name="umur" placeholder="Umur">
+  <button type="submit">Kirim</button>
+</form>
+```
+
+```php hasil.php
+<?php
+$nama = htmlspecialchars($_POST['nama']);
+$umur = (int) $_POST['umur'];
+echo "Halo $nama, umurmu $umur tahun.";
+```
+
+</CodeGroup>
+
+<Tip>Selalu bungkus teks dari pengguna dengan `htmlspecialchars()` sebelum ditampilkan agar skrip berbahaya tidak ikut tampil.</Tip>
+
+## Latihan (LKPD 1)
+
+1. Buat kalkulator dua angka dengan pilihan operator (+, -, x, :).
+2. Tambahkan pengecekan pembagian dengan nol.
+3. Buat form biodata dengan hobi berupa array dan tampilkan dengan `foreach`.
+4. Bungkus perhitungan dalam sebuah fungsi.
+
+## Ringkasan
+
+- PHP dijalankan di server dan hasilnya berupa HTML.
+- Variabel diawali `$`; string digabung dengan `.`.
+- Data form dibaca dengan `$_POST` (method post) atau `$_GET` (method get).
+
+## Referensi
+
+- [Dokumentasi PHP](https://www.php.net/manual/en/)

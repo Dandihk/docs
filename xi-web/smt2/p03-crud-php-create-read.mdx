@@ -1,0 +1,111 @@
+---
+title: "Pertemuan 3: CRUD PHP native (Create dan Read)"
+sidebarTitle: "P3 - CRUD PHP (Create, Read)"
+description: "Membuat fitur tambah dan tampil data pada PHP native dengan prepared statement."
+keywords:
+  - "CRUD"
+  - "INSERT"
+  - "SELECT"
+  - "prepared statement"
+  - "SQL injection"
+---
+
+## Tujuan pembelajaran
+
+Setelah pertemuan ini kamu mampu:
+
+- membuat form tambah data (Create) dengan `INSERT`,
+- menampilkan daftar dan detail data (Read) dengan `SELECT`,
+- memakai prepared statement agar aman dari SQL injection.
+
+## Konsep CRUD
+
+CRUD adalah empat operasi dasar data: **C**reate (tambah), **R**ead (tampil), **U**pdate (ubah), **D**elete (hapus). Hari ini kita mengerjakan Create dan Read.
+
+| Operasi | Perintah SQL | Halaman |
+| --- | --- | --- |
+| Create | `INSERT INTO` | `tambah.php`, `proses.php` |
+| Read | `SELECT` | `index.php`, `detail.php` |
+
+## Mengapa query harus aman
+
+Jika input pengguna langsung disambung ke query, input yang mengandung tanda kutip dapat merusak query. Ini disebut SQL injection. Solusi paling tepat adalah **prepared statement**: query dan data dikirim terpisah.
+
+<Warning>Jangan pernah menulis `"... VALUES ('$_POST[nama]')"`. Data dari pengguna harus selalu dianggap tidak aman.</Warning>
+
+## Form tambah data
+
+```php tambah.php
+<form action="proses.php" method="post">
+  <input type="text" name="nama" placeholder="Nama" required>
+  <input type="text" name="kelas" placeholder="Kelas" required>
+  <textarea name="alamat" placeholder="Alamat"></textarea>
+  <button type="submit" name="simpan">Simpan</button>
+</form>
+```
+
+## Proses INSERT dengan prepared statement
+
+```php proses.php
+<?php
+include 'koneksi.php';
+
+if (isset($_POST['simpan'])) {
+    $nama   = trim($_POST['nama']);
+    $kelas  = trim($_POST['kelas']);
+    $alamat = trim($_POST['alamat']);
+
+    if ($nama === '' || $kelas === '') {
+        die("Nama dan kelas wajib diisi.");
+    }
+
+    $stmt = mysqli_prepare($koneksi,
+        "INSERT INTO siswa (nama, kelas, alamat) VALUES (?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "sss", $nama, $kelas, $alamat);
+    mysqli_stmt_execute($stmt);
+
+    header("Location: index.php?status=sukses");
+    exit;
+}
+```
+
+Huruf `sss` berarti tiga parameter bertipe string (`i` untuk integer, `d` untuk desimal).
+
+## Menampilkan detail satu data
+
+```php detail.php
+<?php
+include 'koneksi.php';
+
+$id = (int) $_GET['id'];
+$stmt = mysqli_prepare($koneksi, "SELECT * FROM siswa WHERE id = ?");
+mysqli_stmt_bind_param($stmt, "i", $id);
+mysqli_stmt_execute($stmt);
+$siswa = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+
+if (!$siswa) {
+    die("Data tidak ditemukan.");
+}
+?>
+<h2><?= htmlspecialchars($siswa['nama']) ?></h2>
+<p>Kelas: <?= htmlspecialchars($siswa['kelas']) ?></p>
+```
+
+Tautan dari daftar: `<a href="detail.php?id=<?= $row['id'] ?>">Detail</a>`.
+
+## Latihan (LKPD 3)
+
+1. Salin proyek Pertemuan 2 sebagai dasar.
+2. Buat `tambah.php` dan `proses.php` memakai prepared statement.
+3. Tambahkan validasi kolom wajib dan pesan sukses di `index.php`.
+4. Buat `detail.php?id=...` dan uji dengan input yang mengandung tanda kutip.
+
+## Ringkasan
+
+- `INSERT` menambah data, `SELECT` menampilkan data.
+- Prepared statement memisahkan query dari data sehingga aman dari SQL injection.
+- `header('Location: ...')` mengarahkan pengguna setelah proses selesai.
+
+## Referensi
+
+- [Prepared statements di PHP](https://www.php.net/manual/en/mysqli.quickstart.prepared-statements.php)

@@ -1,0 +1,105 @@
+---
+title: "Pertemuan 2: Koneksi PHP ke MySQL"
+sidebarTitle: "P2 - Koneksi PHP ke MySQL"
+description: "Membuat database MySQL, menghubungkan PHP dengan mysqli, dan menampilkan data tabel."
+keywords:
+  - "MySQL"
+  - "mysqli"
+  - "phpMyAdmin"
+  - "koneksi database"
+---
+
+## Tujuan pembelajaran
+
+Setelah pertemuan ini kamu mampu:
+
+- membuat database dan tabel melalui phpMyAdmin,
+- menghubungkan PHP ke MySQL dengan `mysqli_connect()`,
+- menampilkan data tabel ke halaman web.
+
+## Arsitektur PHP dan MySQL
+
+PHP tidak menyimpan data secara permanen. Data disimpan di database MySQL; PHP bertugas mengirim query dan menampilkan hasilnya.
+
+## Membuat database dan tabel
+
+<Steps>
+  <Step title="Nyalakan Apache dan MySQL">
+    Buka XAMPP Control Panel lalu klik Start pada Apache dan MySQL.
+  </Step>
+  <Step title="Buka phpMyAdmin">
+    Akses `http://localhost/phpmyadmin`, lalu buat database baru bernama `db_sekolah`.
+  </Step>
+  <Step title="Buat tabel siswa">
+    Jalankan SQL berikut pada tab SQL.
+  </Step>
+</Steps>
+
+```sql tabel-siswa.sql
+CREATE TABLE siswa (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nama VARCHAR(100) NOT NULL,
+  kelas VARCHAR(20) NOT NULL,
+  alamat TEXT
+);
+
+INSERT INTO siswa (nama, kelas, alamat) VALUES
+('Andi', 'XI PPLG 1', 'Semarang'),
+('Sari', 'XI PPLG 1', 'Ungaran'),
+('Budi', 'XI PPLG 2', 'Demak');
+```
+
+## Koneksi PHP ke MySQL
+
+Parameter `mysqli_connect()` berurutan: host, username, password, nama database.
+
+```php koneksi.php
+<?php
+$koneksi = mysqli_connect("localhost", "root", "", "db_sekolah");
+
+if (!$koneksi) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+```
+
+<Note>Pada XAMPP bawaan, username `root` dan password kosong. Jangan memakai pengaturan ini untuk server sungguhan.</Note>
+
+## Menampilkan data dari tabel
+
+```php index.php
+<?php
+include 'koneksi.php';
+
+$hasil = mysqli_query($koneksi, "SELECT * FROM siswa");
+?>
+<table border="1" cellpadding="6">
+  <tr><th>No</th><th>Nama</th><th>Kelas</th><th>Alamat</th></tr>
+  <?php $no = 1; while ($row = mysqli_fetch_assoc($hasil)) { ?>
+  <tr>
+    <td><?= $no++ ?></td>
+    <td><?= htmlspecialchars($row['nama']) ?></td>
+    <td><?= htmlspecialchars($row['kelas']) ?></td>
+    <td><?= htmlspecialchars($row['alamat']) ?></td>
+  </tr>
+  <?php } ?>
+</table>
+```
+
+- `mysqli_query()` menjalankan perintah SQL.
+- `mysqli_fetch_assoc()` mengambil satu baris hasil sebagai array asosiatif; dipanggil berulang di dalam `while`.
+
+## Latihan (LKPD 2)
+
+1. Buat database `db_sekolah` dan tabel `siswa` dengan minimal 10 data.
+2. Buat `koneksi.php` yang menampilkan pesan jelas jika gagal.
+3. Tampilkan seluruh data dalam tabel HTML.
+4. Ekspor database ke file `.sql` dan kumpulkan bersama folder proyek.
+
+## Ringkasan
+
+- `mysqli_connect()` membuka koneksi, `die()` menghentikan program jika gagal.
+- `mysqli_query()` menjalankan SQL, `mysqli_fetch_assoc()` membaca hasil baris per baris.
+
+## Referensi
+
+- [Dokumentasi mysqli](https://www.php.net/manual/en/book.mysqli.php)
