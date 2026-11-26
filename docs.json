@@ -72,6 +72,22 @@
                 "pages": [
                   "untitled-page-4"
                 ]
+              },
+              {
+                "group": "Pemrograman Web Dinamis Server Side",
+                "pages": []
+              },
+              {
+                "group": "Framework Laravel",
+                "pages": []
+              },
+              {
+                "group": "Endpoint API",
+                "pages": []
+              },
+              {
+                "group": "Framework Frontend (Vue.js)",
+                "pages": []
               }
             ],
             "icon": "2"
